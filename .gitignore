@@ -1,0 +1,41 @@
+# Flutter
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.iml
+.idea/
+.vscode/
+*.lock
+pubspec.lock
+
+# Node
+node_modules/
+package-lock.json
+
+# Firebase
+google-services.json
+GoogleService-Info.plist
+.firebase/
+firebase.json
+
+# Secrets
+.env
+*.jks
+*.keystore
+key.properties
+android/key.properties
+maps_api_key.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+test/.test_runner.dart
+
+# Logs
+*.log
+android/.kotlin/

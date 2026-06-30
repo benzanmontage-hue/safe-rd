@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Flutter ${{ matrix.channel }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        channel: [stable]
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🎯 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ matrix.channel }}
+          flutter-version: 3.x
+          cache: true
+
+      - name: 📦 Install dependencies
+        run: flutter pub get
+
+      - name: 🧹 Analyze (dart analyze)
+        run: dart analyze
+
+      - name: ✨ Check formatting (dart format)
+        run: dart format --set-exit-if-changed .
+
+      - name: 🧪 Run tests
+        run: flutter test
+
+      - name: 📱 Build APK (debug)
+        run: flutter build apk --debug
+
+      - name: 📤 Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: saferd-apk-${{ matrix.channel }}-${{ github.sha }}
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: warn

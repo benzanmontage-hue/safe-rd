@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeRD — Seguridad Vial en República Dominicana</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--blue:#002D62;--red:#CE1126;--white:#FFF;--gold:#F4A261;--gray:#f5f5f5;--text:#333}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);line-height:1.6}
+  .hero{background:linear-gradient(135deg,#002D62 0%,#004080 50%,#CE1126 100%);color:#fff;padding:80px 20px 60px;text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  .hero h1{font-size:clamp(2rem,6vw,4rem);font-weight:800;margin-bottom:10px;text-shadow:2px 2px 4px rgba(0,0,0,.3)}
+  .hero .sub{font-size:clamp(1rem,3vw,1.4rem);opacity:.9;margin-bottom:30px}
+  .hero .flag-bar{width:80px;height:4px;background:linear-gradient(90deg,var(--red)33%,var(--white)33%,var(--white)66%,var(--red)66%);margin:0 auto 30px;border-radius:2px}
+  .btn{display:inline-block;padding:16px 40px;border-radius:50px;font-size:1.1rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:all .3s}
+  .btn-primary{background:var(--gold);color:#002D62;box-shadow:0 4px 20px rgba(244,162,97,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(244,162,97,.6)}
+  .btn-outline{background:transparent;border:2px solid #fff;color:#fff;margin-left:15px}
+  .btn-outline:hover{background:rgba(255,255,255,.15)}
+  .stats{display:flex;justify-content:center;gap:40px;margin-top:50px;flex-wrap:wrap}
+  .stat{text-align:center}
+  .stat .num{font-size:2rem;font-weight:800;color:var(--gold)}
+  .stat .label{font-size:.85rem;opacity:.8}
+  section{padding:80px 20px;max-width:1100px;margin:0 auto}
+  section h2{font-size:2rem;text-align:center;margin-bottom:15px;color:var(--blue)}
+  section .subtitle{text-align:center;color:#666;margin-bottom:50px}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+  .card{background:#fff;border-radius:20px;padding:30px;box-shadow:0 4px 30px rgba(0,0,0,.08);transition:all .3s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 8px 40px rgba(0,0,0,.12)}
+  .card .icon{font-size:2.5rem;margin-bottom:15px}
+  .card h3{font-size:1.2rem;margin-bottom:10px;color:var(--blue)}
+  .card p{color:#666;font-size:.95rem}
+  .how{background:var(--gray)}
+  .how .steps{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+  .step{text-align:center;max-width:200px}
+  .step .circle{width:70px;height:70px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;margin:0 auto 15px}
+  .step h4{margin-bottom:5px}
+  .signup{background:linear-gradient(135deg,var(--blue),#003366);color:#fff;text-align:center}
+  .signup h2{color:#fff}
+  .signup .subtitle{color:rgba(255,255,255,.8)}
+  #signup-form{max-width:400px;margin:30px auto 0;display:flex;flex-direction:column;gap:12px}
+  #signup-form input{padding:14px 20px;border-radius:50px;border:none;font-size:1rem;outline:none}
+  #signup-form .btn{width:100%;text-align:center}
+  #msg{margin-top:15px;font-weight:600}
+  footer{text-align:center;padding:30px;background:#001a33;color:rgba(255,255,255,.6);font-size:.85rem}
+  .alert-types{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+  .alert-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:8px 18px;border-radius:50px;font-size:.85rem}
+  @media(max-width:600px){
+    .btn-outline{margin-left:0;margin-top:10px}
+    .stats{gap:20px}
+    section{padding:50px 15px}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div style="font-size:3rem;margin-bottom:10px">🛡️</div>
+  <h1>SafeRD</h1>
+  <div class="flag-bar"></div>
+  <p class="sub">Seguridad vial en tiempo real para la República Dominicana.<br>Reporta peligros. Salva vidas.</p>
+  <div>
+    <a href="#signup" class="btn btn-primary">📲 Descargar App</a>
+    <a href="#features" class="btn btn-outline">Ver más</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">0</div><div class="label">Accidentes reportados</div></div>
+    <div class="stat"><div class="num">RD</div><div class="label">Cobertura nacional</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="label">Alertas en vivo</div></div>
+  </div>
+  <div class="alert-types">
+    <span class="alert-badge">🚗 Accidente</span>
+    <span class="alert-badge">🚧 Construcción</span>
+    <span class="alert-badge">💧 Inundación</span>
+    <span class="alert-badge">🔫 Asalto</span>
+    <span class="alert-badge">🕳️ Hueco</span>
+    <span class="alert-badge">⚡ Cable caído</span>
+    <span class="alert-badge">🔥 Incendio</span>
+    <span class="alert-badge">🚔 Control policial</span>
+  </div>
+</section>
+
+<section id="features">
+  <h2>¿Cómo SafeRD te protege?</h2>
+  <p class="subtitle">Tecnología simple para salvar vidas en las calles dominicanas</p>
+  <div class="features">
+    <div class="card">
+      <div class="icon">🗺️</div>
+      <h3>Mapa en Vivo</h3>
+      <p>Ves todos los peligros cerca de ti en un mapa interactivo. Accidentes, huecos, inundaciones — reportados por la comunidad.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🚨</div>
+      <h3>Reporta en 1 Toque</h3>
+      <p>¿Viste un peligro? Repórtalo en segundos. 8 tipos de incidentes. Tu ubicación se envía automáticamente.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔊</div>
+      <h3>Alertas de Voz</h3>
+      <p>Cuando te acercas a un peligro, la app te avisa en español. Sin mirar la pantalla mientras manejas.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🆘</div>
+      <h3>Botón SOS</h3>
+      <p>Emergencia? Mantén presionado 3 segundos y envía tu ubicación por WhatsApp a tus contactos.</p>
+    </div>
+    <div class="card">
+      <div class="icon">✅</div>
+      <h3>Confirmado por la Comunidad</h3>
+      <p>Cada reporte puede ser confirmado o rechazado. Solo ves alertas verificadas. No fake news.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔒</div>
+      <h3>Privacidad Primero</h3>
+      <p>Tus datos son tuyos. Reportes anónimos. Sin tracking. Código abierto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <h2>3 Pasos para Empezar</h2>
+  <p class="subtitle">Más fácil que un dominicano encontrando una fiesta</p>
+  <div class="steps">
+    <div class="step">
+      <div class="circle">1</div>
+      <h4>Descarga</h4>
+      <p style="font-size:.9rem;color:#666">Baja la app gratis desde nuestra página</p>
+    </div>
+    <div class="step">
+      <div class="circle">2</div>
+      <h4>Activa GPS</h4>
+      <p style="font-size:.9rem;color:#666">Permite ubicación para ver peligros cerca de ti</p>
+    </div>
+    <div class="step">
+      <div class="circle">3</div>
+      <h4>Reporta</h4>
+      <p style="font-size:.9rem;color:#666">¿Ves algo? Repórtalo. Así protegemos a todos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <h2>¿Quieres ser de los primeros?</h2>
+  <p class="subtitle">Déjanos tu correo y te avisamos cuando la app esté disponible</p>
+  <form id="signup-form" onsubmit="return signup(event)">
+    <input type="text" id="name" placeholder="Tu nombre" required>
+    <input type="email" id="email" placeholder="tu@correo.com" required>
+    <input type="text" id="ciudad" placeholder="Ciudad (ej: Santo Domingo)">
+    <button type="submit" class="btn btn-primary">🔔 Avísame</button>
+  </form>
+  <div id="msg"></div>
+</section>
+
+<footer>
+  <p>SafeRD · Hecho con ❤️ para República Dominicana</p>
+  <p style="margin-top:5px">MVP v1 · Gratis · Sin anuncios</p>
+</footer>
+
+<script>
+function signup(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  const email=document.getElementById('email').value;
+  const ciudad=document.getElementById('ciudad').value;
+  const msg=document.getElementById('msg');
+  // Save to localStorage (later: Firebase)
+  const users=JSON.parse(localStorage.getItem('saferd_signups')||'[]');
+  users.push({name,email,ciudad,date:new Date().toISOString()});
+  localStorage.setItem('saferd_signups',JSON.stringify(users));
+  msg.innerHTML='✅ ¡Gracias '+name+'! Te avisaremos pronto.';
+  msg.style.color='#F4A261';
+  document.getElementById('signup-form').reset();
+  setTimeout(()=>msg.innerHTML='',5000);
+  return false;
+}
+</script>
+
+</body>
+</html>

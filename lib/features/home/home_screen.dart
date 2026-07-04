@@ -112,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildMap() {
+    if (_mapError) return _mapFallback();
     try {
       return GoogleMap(
         initialCameraPosition: const CameraPosition(

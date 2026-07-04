@@ -6,7 +6,7 @@ import '../core/constants.dart';
 /// Push notification service using Firebase Cloud Messaging.
 /// Sends alerts for new incidents and SOS confirmations.
 class NotificationService {
-  final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+  FirebaseMessaging? _fcm;
   final FlutterLocalNotificationsPlugin _local = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
 
@@ -23,19 +23,21 @@ class NotificationService {
   Future<void> init() async {
     if (_initialized) return;
 
-    // Request permissions
-    await _fcm.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+    try {
+      _fcm = FirebaseMessaging.instance;
 
-    // Get FCM token
-    fcmToken = await _fcm.getToken();
-    _fcm.onTokenRefresh.listen((token) => fcmToken = token);
+      await _fcm!.requestPermission(
+        alert: true, badge: true, sound: true,
+      );
 
-    // Subscribe to incident alerts topic
-    await _fcm.subscribeToTopic(AppConstants.notificationsTopic);
+      fcmToken = await _fcm!.getToken();
+      _fcm!.onTokenRefresh.listen((token) => fcmToken = token);
+      await _fcm!.subscribeToTopic(AppConstants.notificationsTopic);
+      FirebaseMessaging.onMessage.listen(_showLocalNotification);
+    } catch (e) {
+      debugPrint('SafeRD — FCM init skipped: $e');
+      _fcm = null;
+    }
 
     // Local notification setup (Android)
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -52,7 +54,6 @@ class NotificationService {
     );
 
     // Handle foreground messages with local notification
-    FirebaseMessaging.onMessage.listen(_showLocalNotification);
 
     _initialized = true;
   }
@@ -103,7 +104,7 @@ class NotificationService {
   }
 
   Future<void> dispose() async {
-    await _fcm.unsubscribeFromTopic(AppConstants.notificationsTopic);
+    await _fcm?.unsubscribeFromTopic(AppConstants.notificationsTopic);
     await _local.cancelAll();
   }
 }

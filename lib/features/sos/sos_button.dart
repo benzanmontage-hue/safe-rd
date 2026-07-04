@@ -21,7 +21,7 @@ class SOSButton extends StatefulWidget {
 }
 
 class _SOSButtonState extends State<SOSButton>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   bool _holding = false;
   int _count = AppConstants.sosCountdownSeconds;
   Timer? _timer;

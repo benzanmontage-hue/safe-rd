@@ -10,6 +10,7 @@ import 'services/notification_service.dart';
 import 'core/theme.dart';
 import 'core/constants.dart';
 import 'features/home/home_screen.dart';
+import 'features/main_scaffold.dart';
 
 /// SafeRD — Main application entry point for the Dominican Republic.
 ///
@@ -235,14 +236,7 @@ class SafeRDApp extends StatelessWidget {
         title: AppConstants.appName,
         debugShowCheckedModeBanner: false,
         theme: AppTheme.dark,
-        home: Consumer2<FirebaseService, LocationService>(
-          builder: (_, firebase, location, __) {
-            return HomeScreen(
-              firebase: firebase,
-              location: location,
-            );
-          },
-        ),
+        home: const MainScaffold(),
       ),
     );
   }

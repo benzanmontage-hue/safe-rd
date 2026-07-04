@@ -130,10 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
         myLocationEnabled: true,
         myLocationButtonEnabled: false,
         mapToolbarEnabled: false,
-        onMapError: (error) {
-          debugPrint('SafeRD — Map error: $error');
-          if (mounted) setState(() => _mapError = true);
-        },
         markers: _incidents
             .where((i) => i.active)
             .map((i) => Marker(

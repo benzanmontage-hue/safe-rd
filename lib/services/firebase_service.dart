@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -30,10 +31,9 @@ class FirebaseService {
   Future<void> enableOfflinePersistence() async {
     if (_persistenceEnabled) return;
     try {
-      await FirebaseFirestore.instance.settings =
-          const Settings(persistenceEnabled: true);
+      // Cloud Firestore enables offline persistence by default in current versions
       _persistenceEnabled = true;
-      debugPrint('SafeRD — Firestore offline persistence enabled');
+      debugPrint('SafeRD — Firestore offline persistence ready');
     } catch (e) {
       debugPrint('SafeRD — Failed to enable persistence: $e');
     }

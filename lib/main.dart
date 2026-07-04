@@ -62,7 +62,7 @@ void main() async {
                 child: SelectableText(
                   details.exceptionAsString(),
                   style: const TextStyle(
-                    color: Color(0xFFFF6A00),
+                    color: const Color(0xFFFF6A00),
                     fontSize: 13,
                     fontFamily: 'monospace',
                   ),
@@ -178,7 +178,7 @@ void main() async {
                     child: SelectableText(
                       '$e',
                       style: const TextStyle(
-                        color: Color(0xFFFF6A00),
+                        color: const Color(0xFFFF6A00),
                         fontSize: 13,
                         fontFamily: 'monospace',
                       ),

@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import '../../core/theme.dart';
 import '../../services/firebase_service.dart';
 import '../../services/location_service.dart';
-import '../home/sos_home_screen.dart';
-import '../home/home_screen.dart'; // old map screen → becomes Map tab
+import 'home/sos_home_screen.dart';
+import 'home/home_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
 
@@ -20,7 +20,6 @@ class MainScaffold extends StatefulWidget {
 
 class _MainScaffoldState extends State<MainScaffold> {
   int _currentIndex = 0;
-
   late final List<Widget> _screens;
 
   @override

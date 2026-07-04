@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/incident.dart';
-import 'core/theme.dart';
+import '../core/theme.dart';
 
 /// SafeRD — Incident card widget for the Dominican Republic.
 ///
